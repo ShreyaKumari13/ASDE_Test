@@ -1,0 +1,29 @@
+Algorithm
+
+1. Initialization:
+
+Let p be Abhimanyu's initial power.
+Let k = [k1, k2, ..., k11] be an array representing the power of enemies in each circle.
+Let a be the number of skips available.
+Let b be the number of recharges available.
+
+2. Traverse each circle:
+
+For each circle i from 1 to 11:
+    -Check if Abhimanyu can skip:
+        If a > 0, decrement a and continue to the next circle without battling.
+    -Battle the enemy:
+        If p >= k[i], Abhimanyu wins the battle and loses k[i] power.
+        If p < k[i], Abhimanyu loses the battle, and the algorithm terminates with failure.
+    -Regeneration condition:
+        If Abhimanyu is at circle 4 (i == 4) and k3 enemy is regenerated:
+            k3 will attack with half its initial power from behind. If p < k3/2, Abhimanyu loses the battle; otherwise, Abhimanyu loses k3/2 power.
+        If Abhimanyu is at circle 8 (i == 8) and k7 enemy is regenerated:
+            k7 will attack with half its initial power from behind. If p < k7/2, Abhimanyu loses the battle; otherwise, Abhimanyu loses k7/2 power.
+    -Recharge if needed:
+        If Abhimanyu's power is too low (optional check, not strictly needed):
+            If b > 0, recharge p with a predefined value (or recharging could reset power to a certain level). Decrement b.
+Final check:
+
+    If Abhimanyu survives all 11 circles, return "Success".
+    Otherwise, return "Failure".
